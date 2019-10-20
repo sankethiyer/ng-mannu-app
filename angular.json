@@ -120,6 +120,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "ng-mannu-app"
 }

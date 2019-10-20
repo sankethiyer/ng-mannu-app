@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ng-mannu-app';
+  name = 'Mannu App';
+  selectedIndex = 1;
+
+
+  countChangedHandler(count: number) {
+    console.log(count);
+    this.selectedIndex = count;
+  }
+
 }

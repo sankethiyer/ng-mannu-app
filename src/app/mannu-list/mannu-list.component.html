@@ -1,0 +1,23 @@
+<!-- <button type="button" class="btn btn-primary text-center" (click)="fetchAllMannu()">fetchAllMannu</button> -->
+
+<table class="table table-striped" *ngIf="mannus.length > 0">
+    <thead>
+        <tr>
+            <th scope="col">Mannu Name</th>
+            <th scope="col">Tablets remaining</th>
+            <th scope="col">Expiry Date</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mannu of mannus; index as i">
+            <td class="{{mannu.expiredClass}}">{{ mannu.mannuName }}</td>
+            <td class="{{mannu.expiredClass}}">{{ mannu.tabletsRemaining | number }}</td>
+            <td class="{{mannu.expiredClass}}">{{ mannu.expiryDate | date:'fullDate'}}</td>
+            <td class="{{mannu.expiredClass}}">
+                <a href="javascript:void(0);" (click)="onEditMannu(mannu);"><i class="fas fa-edit"></i></a>
+                <a href="javascript:void(0);" (click)="onDeleteMannu(mannu);"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
