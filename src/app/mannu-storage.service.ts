@@ -44,7 +44,7 @@ export class MannuStorageService {
           Object.entries(mannu).forEach((element) => {
             mannuArray.push({ ...element[1], id: element[0] })
           });
-
+          mannuArray.sort((a, b) => a.expiryDate < b.expiryDate ? 1 : -1)
           this.mannuService.setMannus(mannuArray.slice());
         })
       )
@@ -63,13 +63,14 @@ export class MannuStorageService {
   }
 
   updateMannu(id: string, mannu: Mannu) {
-    const url = FIREBASE_DB_URL + `/${mannu.id}` + FIREBASE_DB_URL_SUFFIX;
+
+    const url = FIREBASE_DB_URL + `/${id}` + FIREBASE_DB_URL_SUFFIX;
 
     console.log("in mannustorage.updateMannu()", mannu, url);
 
     return this.http.patch(url, {...mannu}).pipe(
       tap(() => {
-        this.mannuService.updateMannu(mannu.id, { ...mannu });
+        this.mannuService.updateMannu(id, { ...mannu });
       })
     )
   }

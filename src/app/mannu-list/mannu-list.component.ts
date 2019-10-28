@@ -30,11 +30,10 @@ export class MannuListComponent implements OnInit, OnDestroy {
     this.mannus = this.mannuService.getMannus();
 
     this.subscription = this.mannuService.mannusChanged
-      //this.subscription = this.mannuStorageService.fetchAllMannu()
       .subscribe((mannus: Mannu[]) => {
         this.mannus = Object.values(mannus);
         console.log(this.mannus);
-        this.mannus.forEach(mannu => {          
+        this.mannus.forEach(mannu => {
           if (new Date(mannu.expiryDate) < this.now) {
             mannu.expiredClass = ' text-danger'
           } else if (new Date(mannu.expiryDate) < this.nextMonth) {
@@ -43,26 +42,13 @@ export class MannuListComponent implements OnInit, OnDestroy {
             mannu.expiredClass = ' text-dark'
           }
         });
-
       })
 
   }
 
-
-  // fetchAllMannu() {
-  //   this.mannuStorageService.fetchAllMannu().subscribe(response => {
-  //     // console.log(Object.entries(response));
-  //     // console.log(Object.keys(response));
-
-  //     Object.values(response).forEach(element => {
-  //       console.log(element);
-
-  //     });
-  //   });
-  // }
-
   onEditMannu(mannu: Mannu) {
-    this.mannuStorageService.updateMannu(mannu.id, mannu);
+    this.mannuService.editingMannu.next(mannu);
+    this.mannuService.selectedIndexChanged.next(1);
   }
 
   onDeleteMannu(mannu) {

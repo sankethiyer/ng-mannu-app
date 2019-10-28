@@ -22,12 +22,12 @@
 
     <div class="clear"></div>
 
-    <mat-tab-group [selectedIndex]="selectedIndex" dynamicHeight>
+    <mat-tab-group [selectedIndex]="selectedIndex" (selectedTabChange)="tabChanged($event)" dynamicHeight>
       <mat-tab label="Mannu List">
         <app-mannu-list></app-mannu-list>
       </mat-tab>
       <mat-tab label="Add Mannu">
-        <app-mannu-form (countChanged)="countChangedHandler($event)"></app-mannu-form>
+        <app-mannu-form></app-mannu-form>
       </mat-tab>
     </mat-tab-group>
 

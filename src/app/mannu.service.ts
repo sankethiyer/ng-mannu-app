@@ -9,6 +9,8 @@ import { MannuStorageService } from './mannu-storage.service';
 export class MannuService {
   mannusChanged = new Subject<Mannu[]>();
   private mannus: Mannu[] = [];
+  editingMannu  = new Subject<Mannu>();
+  selectedIndexChanged  = new Subject<number>();
 
   constructor() { }
 
