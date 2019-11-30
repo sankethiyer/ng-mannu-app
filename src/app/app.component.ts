@@ -33,7 +33,6 @@ export class AppComponent implements OnInit, OnDestroy {
     // console.log('tabChangeEvent => ', tabChangeEvent);
     // console.log('index => ', tabChangeEvent.index);
     this.selectedIndex = tabChangeEvent.index
-
   }
 
   ngOnDestroy(): void {

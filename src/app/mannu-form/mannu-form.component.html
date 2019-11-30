@@ -1,36 +1,43 @@
 <div class="clear"></div>
+<!-- <h1>editMode = {{editMode}}, editId = {{editId}}</h1> -->
 <form (ngSubmit)="onFormSubmit(mannuEntryForm)" #mannuEntryForm="ngForm">
 	<!-- <app-mannu-name></app-mannu-name> -->
 
 	<div class="form-group">
 		<label for="inputAddress">Mannu name</label>
-		<input type="text" class="form-control" id="inputAddress" 
-			placeholder="Type name of Mannu here..." name="mannuName" ngModel required>
+		<input type="text" class="form-control" id="inputAddress" placeholder="Type name of Mannu here..."
+			name="mannuName" ngModel required>
 	</div>
 
 	<div class="form-group">
 		<label for="inputAddress2">Tablets remaining</label>
-		<input type="number" class="form-control" id="inputAddress2" placeholder="" 
-			name="tabletsRemaining" ngModel required>
+		<input type="number" class="form-control" id="inputAddress2" placeholder="" name="tabletsRemaining" ngModel
+			required>
 	</div>
 
 	<div class="form-group">
 		<label for="date">Expiry date</label>
 
 		<div class="input-group">
-			<input class="form-control" placeholder="yyyy-mm-dd" name="dp" 
-				[(ngModel)]="model" ngbDatepicker id="date"
-				#d2="ngbDatepicker" name="expiryDate"  #c2="ngModel" required>
+			<input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker id="date"
+				#d2="ngbDatepicker" name="expiryDate" #c2="ngModel" required>
 			<div class="input-group-append">
-				<button class="btn btn-outline-secondary calendar" 
-				(click)="d2.toggle()" type="button"></button>
+				<button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
 			</div>
 		</div>
 	</div>
 
-	<!-- <hr />
-	<pre>Model: {{ model | json }}</pre> -->
+	<div class="form-group">
+		<label for="profile">Choose profile</label>
+		<select name="profile" id="profile" class="form-control" ngModel required>
+			<option *ngFor="let profile of profiles;let i = index" [value]="profile" >
+				{{profile}}</option>
+		</select>
+	</div>
 
+	<!-- <hr />
+	<pre>Form: {{ mannuEntryForm.value | json }}</pre> -->
+ 
 	<button type="submit" class="btn btn-primary text-center" [disabled]="!mannuEntryForm.valid">Submit</button>
 
 </form>

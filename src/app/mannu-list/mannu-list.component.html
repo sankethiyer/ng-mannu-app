@@ -6,6 +6,7 @@
             <th scope="col">Mannu Name</th>
             <th scope="col">Tablets remaining</th>
             <th scope="col">Expiry Date</th>
+            <th scope="col">Profile</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -14,6 +15,7 @@
             <td class="{{mannu.expiredClass}}">{{ mannu.mannuName }}</td>
             <td class="{{mannu.expiredClass}}">{{ mannu.tabletsRemaining | number }}</td>
             <td class="{{mannu.expiredClass}}">{{ mannu.expiryDate | date:'fullDate'}}</td>
+            <td class="{{mannu.expiredClass}}">{{ mannu.profile }}</td>
             <td class="{{mannu.expiredClass}}">
                 <a href="javascript:void(0);" (click)="onEditMannu(mannu);"><i class="fas fa-edit"></i></a>
                 <a href="javascript:void(0);" (click)="onDeleteMannu(mannu);"><i class="fas fa-trash"></i></a>

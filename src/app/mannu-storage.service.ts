@@ -41,9 +41,14 @@ export class MannuStorageService {
       .pipe(
         tap(mannu => {
           const mannuArray = [];
-          Object.entries(mannu).forEach((element) => {
-            mannuArray.push({ ...element[1], id: element[0] })
-          });
+          console.log(mannu);
+          
+          if (mannu != null) {
+            Object.entries(mannu).forEach((element) => {
+              mannuArray.push({ ...element[1], id: element[0] })
+            });
+          }
+         
           mannuArray.sort((a, b) => a.expiryDate < b.expiryDate ? 1 : -1)
           this.mannuService.setMannus(mannuArray.slice());
         })
